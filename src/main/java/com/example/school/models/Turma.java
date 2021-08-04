@@ -1,16 +1,13 @@
 package com.example.school.models;
 
 import com.example.school.models.enums.Grau;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
 @Getter
 @Setter
 @AllArgsConstructor

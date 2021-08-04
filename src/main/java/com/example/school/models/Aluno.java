@@ -1,14 +1,11 @@
 package com.example.school.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
