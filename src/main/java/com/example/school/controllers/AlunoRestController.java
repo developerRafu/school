@@ -6,6 +6,7 @@ import com.example.school.models.dto.AlunoDTO;
 import com.example.school.models.dto.TurmaDTO;
 import com.example.school.services.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,13 @@ public class AlunoRestController {
     public ResponseEntity<?> update(@RequestBody AlunoDTO obj) {
         Aluno aluno = this.conterToEntity(obj);
         return ResponseEntity.ok(this.service.update(aluno));
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<?> getPage(
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value="escolaId", required = false) Long escolaId){
+        return ResponseEntity.ok(this.service.findPage(page, escolaId).map(this::convertToDTO).toList());
     }
 
     public Aluno conterToEntity(AlunoDTO dto) {

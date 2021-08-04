@@ -11,6 +11,7 @@ public class AlunoDTO {
     private String nome;
     private Integer idade;
     private Long turmaId;
+    private String turma;
 
     public AlunoDTO() {
 
@@ -21,5 +22,6 @@ public class AlunoDTO {
         this.nome = obj.getNome();
         this.idade = obj.getIdade();
         this.turmaId = obj.getTurma().getId();
+        this.turma = obj.getTurma().getNome();
     }
 }

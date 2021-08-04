@@ -47,6 +47,11 @@ public class TurmaRestController {
 
     }
 
+    @GetMapping("/page")
+    public ResponseEntity<?> findPageable(@RequestParam (value = "page",required = false) Integer page){
+        return ResponseEntity.ok(this.service.findAllPageable(page).map(this::convertToDTO));
+    }
+
     public Turma conterToEntity(TurmaDTO dto) {
         Turma turma = new Turma();
         turma.setId(dto.getId());

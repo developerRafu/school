@@ -13,31 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class SchoolApplication implements CommandLineRunner {
+public class SchoolApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SchoolApplication.class, args);
     }
 
-    @Autowired
-    private TurmaService turmaService;
-    @Autowired
-    private AlunoService alunoService;
-
-    @Override
-    public void run(String... args) throws Exception {
-        Turma turma = new Turma();
-        turma.setNome("202");
-        turma.setGrau(Grau.ENSINO_MEDIO);
-        Aluno a1 = new Aluno();
-        a1.setNome("Rafu");
-        a1.setIdade(21);
-        a1.setTurma(turma);
-        Aluno a2 = new Aluno();
-        a2.setNome("Ryanne");
-        a2.setIdade(25);
-        a2.setTurma(turma);
-        this.turmaService.save(turma);
-        this.alunoService.saveAll(Arrays.asList(a1, a2));
-    }
 }
