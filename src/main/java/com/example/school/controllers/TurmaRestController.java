@@ -7,9 +7,12 @@ import com.example.school.models.dto.TurmaDTO;
 import com.example.school.models.enums.Grau;
 import com.example.school.services.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,8 +51,11 @@ public class TurmaRestController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<?> findPageable(@RequestParam (value = "page",required = false) Integer page){
-        return ResponseEntity.ok(this.service.findAllPageable(page).map(this::convertToDTO));
+    public ResponseEntity<?> findPageable(@RequestParam(value = "page", required = false) Integer page) {
+        Page<TurmaDTO> pages = this.service.findAllPageable(page).map(this::convertToDTO);
+        List<TurmaDTO> dtos = new ArrayList<>();
+        pages.forEach(dtos::add);
+        return ResponseEntity.ok(dtos);
     }
 
     public Turma conterToEntity(TurmaDTO dto) {

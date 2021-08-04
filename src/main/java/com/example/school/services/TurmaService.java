@@ -57,8 +57,8 @@ public class TurmaService {
     }
 
     public Page<Turma> findAllPageable(Integer page) {
-        Pageable pageable = PageRequest.of(page, 10);
         try {
+            Pageable pageable = PageRequest.of(page, 10);
             return this.repository.findAll(pageable);
         } catch (Exception e) {
             throw new ApiException("Erro ao listar turmas", HttpStatus.NOT_FOUND);
